@@ -469,14 +469,14 @@ urn:mace:dir:attribute-def:mail *</pre>"]),
     ));
 
     // Set the displayed message for flagged accounts.
-    $settings->add(new admin_setting_configtextarea(
+    $settings->add(new admin_setting_confightmleditor(
         'auth_saml2/flagmessage',
         get_string('flagmessage', 'auth_saml2'),
         get_string('flagmessage_help', 'auth_saml2'),
         get_string('flagmessage_default', 'auth_saml2'),
-        PARAM_TEXT,
+        PARAM_RAW,
         50,
-        3
+        8
     ));
 
     if (moodle_major_version() < '3.3') {

@@ -398,7 +398,11 @@ class auth extends \auth_plugin_base {
         $PAGE->set_title(get_string('error', 'auth_saml2'));
         $PAGE->set_heading(get_string('error', 'auth_saml2'));
         echo $OUTPUT->header();
-        echo $OUTPUT->box($msg, 'generalbox', 'notice');
+        $formattedmessage = format_text($msg, FORMAT_HTML, [
+            'context' => $PAGE->context,
+            'filter'  => true,
+        ]);
+        echo $OUTPUT->box($formattedmessage, 'generalbox', 'notice');
         $logouturl = new moodle_url('/auth/saml2/logout.php');
         echo $OUTPUT->single_button($logouturl, get_string('logout'), 'get');
         echo $OUTPUT->footer();
